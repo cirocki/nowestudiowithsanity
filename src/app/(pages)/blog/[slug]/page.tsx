@@ -3,6 +3,7 @@ import { PortableText, type SanityDocument } from "next-sanity";
 import Link from "next/link";
 import { POSTDATA } from "../../../../sanity/queries/postData";
 import SanityImage from "@/app/components/atoms/SanityImage/SanityImage";
+import { richTextComponents } from "@/sanity/richTextComponents/richTextComponents";
 
 export default async function PostPage({
   params,
@@ -63,7 +64,9 @@ export default async function PostPage({
           </p>
         ))}
         <br></br>
-        {Array.isArray(richBody) && <PortableText value={richBody} />}
+        {Array.isArray(richBody) && (
+          <PortableText value={richBody} components={richTextComponents} />
+        )}
       </div>
     </article>
   );
