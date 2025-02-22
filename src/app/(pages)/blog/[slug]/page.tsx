@@ -4,6 +4,7 @@ import Link from "next/link";
 import { POSTDATA } from "../../../../sanity/queries/postData";
 import SanityImage from "@/app/components/atoms/SanityImage/SanityImage";
 import { richTextComponents } from "@/sanity/richTextComponents/richTextComponents";
+import { notFound } from "next/navigation";
 
 export default async function PostPage({
   params,
@@ -16,6 +17,10 @@ export default async function PostPage({
     await params,
     options
   );
+
+  if (!post) {
+    return notFound();
+  }
 
   const {
     title,
@@ -41,12 +46,7 @@ export default async function PostPage({
 
       <h1 className="text-4xl font-bold mb-8">{title}</h1>
       {image && (
-        <SanityImage
-          src={post.image}
-          alt={post.title}
-          width={720}
-          height={480}
-        />
+        <SanityImage src={image} alt={title} width={720} height={480} />
       )}
 
       <div className="prose">
