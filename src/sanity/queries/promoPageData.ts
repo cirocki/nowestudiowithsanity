@@ -1,11 +1,10 @@
-export const POSTDATA = `
-*[_type == "post" && slug.current == $slug][0] {
+export const PROMOPAGEDATA = `
+*[_type == "page" && slug.current == $slug][0] {
 title,
 metaTitle,
 image,
 publishedAt,
 seoDesc,
-intro,
 richBody[]{
  ...,
     markDefs[]{
@@ -17,6 +16,5 @@ richBody[]{
       }
     }
 },
-tags[]->{_id, slug, name}
 }
 `;

@@ -27,7 +27,7 @@ export default async function PostPage({
     // metaTitle,
     image,
     publishedAt,
-    seodesc,
+    seoDesc,
     intro,
     richBody,
     tags,
@@ -52,7 +52,7 @@ export default async function PostPage({
       <div className="prose">
         <p>Published: {new Date(publishedAt).toLocaleDateString()}</p>
         <strong>seo:</strong>
-        <p>{seodesc}</p>
+        <p>{seoDesc}</p>
         <br></br>
         <strong>intro:</strong>
         <p>{intro}</p>
