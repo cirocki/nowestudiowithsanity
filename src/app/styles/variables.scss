@@ -1,0 +1,52 @@
+// convert pixel to rems, better for WCAG
+@use "sass:math";
+@function rem($pixel) {
+  @if math.is-unitless($pixel) {
+    @return math.div($pixel, 16) + rem;
+  } @else {
+    @error 'only numbers';
+  }
+}
+
+@import url("https://use.typekit.net/rtq5pvs.css");
+
+$color-black: #0f0f0f;
+$color-white: #ffffff;
+$color-accent: #def71c;
+$color-text-darkbg: #7b7b7b;
+$color-text-lightbg: #767676;
+
+$border-color-dark: #323232;
+
+$font-family-text: "neue-haas-grotesk-text", sans-serif;
+$font-family-display: "neue-haas-grotesk-display", sans-serif;
+
+$container-width: 120rem;
+$container-padding-size: 10vw;
+
+$border-radius-default: 24px;
+
+$desktop-header-height: rem(100);
+$mobile-header-height: rem(80);
+
+/** Media Queries */
+// MIN
+$desktop: "min-width: " rem(1100);
+$xxs: "min-width: " rem(340);
+$xs: "min-width: " rem(400);
+$sm: "min-width: " rem(480);
+$md: "min-width: " rem(769);
+$lg: "min-width: " rem(993);
+$xl: "min-width: " rem(1201);
+$xxl: "min-width: " rem(1401);
+$xxxl: "min-width: " rem(1801);
+// MAX
+$mobile: "max-width: " rem(1099.98);
+$mxxs: "max-width: " rem(339.98);
+$mxs: "max-width: " rem(399.98);
+$msm: "max-width: " rem(479.98);
+$mmd: "max-width: " rem(768.98);
+$mlg: "max-width: " rem(992.98);
+$mxl: "max-width: " rem(1200.98);
+$mxxl: "max-width: " rem(1400.98);
+$mxxxl: "max-width: " rem(1800.98);

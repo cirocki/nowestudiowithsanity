@@ -1,0 +1,66 @@
+@use "./variables.scss" as *;
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: $font-family-text;
+  font-size: rem(18);
+  background-color: $color-black;
+  color: $color-white;
+  line-height: 1.5;
+  position: relative;
+}
+main {
+  flex: 1;
+  margin-top: $desktop-header-height;
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  @media ($mobile) {
+    margin-top: $mobile-header-height;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: flex;
+}
+
+address {
+  font-style: normal;
+}
+
+.fs20 {
+  font-size: rem(20);
+  @media ($mmd) {
+    font-size: rem(18);
+  }
+  @media ($msm) {
+    font-size: rem(15);
+  }
+}
+
+.ex {
+  min-height: 100vh;
+}
+
+.lucide {
+  width: 1em;
+  height: 1em;
+}

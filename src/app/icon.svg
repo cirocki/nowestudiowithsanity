@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="107" height="107"><svg id="SvgjsSvg1011" data-name="Group 92" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="107" height="107" viewBox="0 0 107 107">
+  <defs>
+    <clipPath id="SvgjsClipPath1010">
+      <rect id="SvgjsRect1009" data-name="Rectangle 59" width="107" height="107" fill="none"></rect>
+    </clipPath>
+  </defs>
+  <g id="SvgjsG1008" data-name="Group 91" clip-path="url(#clip-path)">
+    <path id="SvgjsPath1007" data-name="Path 323" d="M96.162,107H10.838A10.838,10.838,0,0,1,0,96.162V10.838A10.838,10.838,0,0,1,10.838,0H96.162A10.838,10.838,0,0,1,107,10.838V96.162A10.838,10.838,0,0,1,96.162,107" fill="#161615"></path>
+    <path id="SvgjsPath1006" data-name="Path 324" d="M118.824,109.685h7.453L155.14,146.63V109.685h7.114V158h-6.978l-29.337-37.67V158h-7.114Z" transform="translate(-87.039 -80.344)" fill="#fff"></path>
+  </g>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>

@@ -1,0 +1,21 @@
+@use "../../../../src/app/styles/variables.scss" as *;
+
+.articles_grid {
+  grid-area: articles;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: rem(80);
+  @media ($mxxl) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.articles_section {
+  padding: rem(160) 0;
+}
+
+.page_header {
+  padding: rem(160) 0;
+  border-bottom: 1px solid $border-color-dark;
+}

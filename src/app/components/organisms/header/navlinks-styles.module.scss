@@ -1,0 +1,89 @@
+@use "../../../styles/variables.scss" as *;
+// NAV
+.nav {
+  display: flex;
+}
+.nav_list {
+  display: inline-flex;
+  @media ($mobile) {
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+  }
+  li {
+    @media ($desktop) {
+      border-right: 2px solid $border-color-dark;
+      padding: 0 rem(30);
+      &:last-of-type {
+        border: none;
+      }
+    }
+  }
+}
+.nav_link {
+  font-size: rem(14);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: $font-family-display;
+  font-weight: 500;
+  display: inline-block;
+  position: relative;
+
+  @media ($mobile) {
+    display: flex;
+    padding: rem(10) 0;
+    font-size: rem(28);
+    font-weight: 400;
+    text-transform: uppercase;
+    color: $color-black;
+    visibility: hidden;
+    opacity: 0;
+    .link_title2 {
+      display: none;
+    }
+  }
+
+  @media ($desktop) {
+    display: flex;
+    align-items: center;
+
+    .mask {
+      position: relative;
+      padding: 0;
+      height: rem(14);
+      overflow: hidden;
+    }
+
+    .link_wrapper {
+      transition: transform 0.4s ease;
+    }
+
+    .title {
+      display: block;
+      font-size: rem(14);
+      line-height: rem(14);
+      transition: transform 0.4s ease;
+    }
+
+    .link_title1 {
+      transform-origin: right center;
+    }
+
+    .link_title2 {
+      transform-origin: left center;
+      transform: rotate(10deg);
+    }
+
+    &:hover {
+      .link_wrapper {
+        transform: translateY(-14px);
+      }
+      .link_title1 {
+        transform: rotate(10deg);
+      }
+      .link_title2 {
+        transform: rotate(0);
+      }
+    }
+  }
+}
