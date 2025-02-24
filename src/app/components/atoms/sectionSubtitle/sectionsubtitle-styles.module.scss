@@ -1,0 +1,14 @@
+@use "../../../styles/variables.scss" as *;
+
+.section_subtitle {
+  font-size: rem(40);
+  @media ($mxxl) {
+    font-size: rem(32);
+  }
+  @media ($mxl) {
+    font-size: rem(28);
+  }
+  @media ($mobile) {
+    font-size: rem(24);
+  }
+}

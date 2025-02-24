@@ -1,0 +1,34 @@
+@use "../../../styles/variables.scss" as *;
+.marquee {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: rem(24) 0;
+  background: $color-white;
+  @media ($msm) {
+    padding: rem(10) 0;
+  }
+}
+.marquee_wrapper {
+  white-space: nowrap;
+  display: flex;
+  flex-shrink: 0;
+}
+.marquee_text {
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: rem(20);
+  color: $color-black;
+  padding-left: rem(20);
+  span {
+    font-size: rem(86);
+    @media ($msm) {
+      font-size: rem(40);
+    }
+  }
+  p {
+    font-size: 80px;
+  }
+}

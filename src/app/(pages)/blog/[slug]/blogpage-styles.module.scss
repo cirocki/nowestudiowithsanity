@@ -1,0 +1,12 @@
+@use "../../../../app/styles/variables.scss" as *;
+
+.blog_header {
+  padding: rem(160) 0;
+  border-bottom: 1px solid $border-color-dark;
+}
+.blog_content {
+  padding: rem(160) 0;
+}
+.blog_footer {
+  padding: rem(160) 0;
+}

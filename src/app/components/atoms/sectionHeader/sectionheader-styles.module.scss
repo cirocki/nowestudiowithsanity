@@ -1,0 +1,19 @@
+@use "../../../styles/variables.scss" as *;
+
+.section_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: rem(20);
+  border-bottom: 1px solid $border-color-dark;
+}
+.title,
+.number {
+  font-family: $font-family-display;
+  font-size: rem(14);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  color: $color-text-darkbg;
+}

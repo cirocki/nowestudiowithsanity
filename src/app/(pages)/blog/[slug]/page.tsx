@@ -2,9 +2,12 @@ import { client } from "../../../../sanity/client";
 import { PortableText, type SanityDocument } from "next-sanity";
 import Link from "next/link";
 import { POSTDATA } from "../../../../sanity/queries/postData";
-import SanityImage from "@/app/components/atoms/SanityImage/SanityImage";
+import SanityImage from "@/app/components/atoms/sanityImage/SanityImage";
 import { richTextComponents } from "@/sanity/richTextComponents/richTextComponents";
 import { notFound } from "next/navigation";
+import ImageWrapper from "@/app/components/atoms/imageWrapper/ImageWrapper";
+import Container from "@/app/components/atoms/container/Container";
+import styles from "./blogpage-styles.module.scss";
 
 export default async function PostPage({
   params,
@@ -40,34 +43,41 @@ export default async function PostPage({
 
   return (
     <article>
-      <Link href="/blog" className="hover:underline">
-        ← Back to posts
-      </Link>
+      <Container>
+        <header className={styles.blog_header}>
+          <h1>{title}</h1>
+          {image && (
+            <ImageWrapper>
+              <SanityImage src={image} alt={title} width={720} height={480} />
+            </ImageWrapper>
+          )}
+        </header>
 
-      <h1 className="text-4xl font-bold mb-8">{title}</h1>
-      {image && (
-        <SanityImage src={image} alt={title} width={720} height={480} />
-      )}
-
-      <div className="prose">
-        <p>Published: {new Date(publishedAt).toLocaleDateString()}</p>
-        <strong>seo:</strong>
-        <p>{seoDesc}</p>
-        <br></br>
-        <strong>intro:</strong>
-        <p>{intro}</p>
-        <br></br>
-        tags:
-        {tags.map((tag: Tag) => (
-          <p className="text-sm font-semibold" key={tag._id}>
-            {tag.name}
-          </p>
-        ))}
-        <br></br>
-        {Array.isArray(richBody) && (
-          <PortableText value={richBody} components={richTextComponents} />
-        )}
-      </div>
+        <div className={styles.blog_content}>
+          <p>Published: {new Date(publishedAt).toLocaleDateString()}</p>
+          <strong>seo:</strong>
+          <p>{seoDesc}</p>
+          <br></br>
+          <strong>intro:</strong>
+          <p>{intro}</p>
+          <br></br>
+          tags:
+          {tags.map((tag: Tag) => (
+            <p className="text-sm font-semibold" key={tag._id}>
+              {tag.name}
+            </p>
+          ))}
+          <br></br>
+          {Array.isArray(richBody) && (
+            <PortableText value={richBody} components={richTextComponents} />
+          )}
+        </div>
+        <div className={styles.blog_footer}>
+          <Link href="/blog" className="hover:underline">
+            ← Back to posts
+          </Link>
+        </div>
+      </Container>
     </article>
   );
 }

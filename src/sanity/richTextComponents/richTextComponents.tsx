@@ -1,6 +1,6 @@
 // import ResolvedLink from './resolvedLink'
 
-import SanityImage from "@/app/components/atoms/SanityImage/SanityImage";
+import SanityImage from "@/app/components/atoms/sanityImage/SanityImage";
 import ResolvedLink from "@/app/utils/resolvedLink";
 import { LinkType } from "@/types/LinkType";
 

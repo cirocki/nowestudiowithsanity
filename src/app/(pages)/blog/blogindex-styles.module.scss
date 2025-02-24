@@ -19,3 +19,16 @@
   padding: rem(160) 0;
   border-bottom: 1px solid $border-color-dark;
 }
+.page_header_content {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-size: rem(80);
+    text-transform: uppercase;
+  }
+  h2 {
+    text-align: right;
+  }
+}

@@ -1,6 +1,6 @@
 import { SanityDocument } from "@sanity/client";
 import Link from "next/link";
-import SanityImage from "../../atoms/SanityImage/SanityImage";
+import SanityImage from "../../atoms/sanityImage/SanityImage";
 import styles from "./postpreview-styles.module.scss";
 import ImageWrapper from "@/app/components/atoms/imageWrapper/ImageWrapper";
 import RightArrow from "@/app/components/atoms/svgs/rightArrow/RightArrow";

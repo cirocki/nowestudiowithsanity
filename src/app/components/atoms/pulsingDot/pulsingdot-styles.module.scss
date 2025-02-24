@@ -1,0 +1,15 @@
+.blinking {
+  width: 8px;
+  height: 8px;
+  background-color: #95fd40;
+  border-radius: 20px;
+  animation-name: blink;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

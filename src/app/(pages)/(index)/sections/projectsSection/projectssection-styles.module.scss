@@ -1,0 +1,26 @@
+@use "../../../../styles/variables.scss" as *;
+.projects {
+  border-top: 1px solid $border-color-dark;
+  padding: rem(160) 0;
+  @media ($mxl) {
+    padding: rem(120) 0;
+  }
+  @media ($mobile) {
+    padding: rem(80) 0;
+  }
+}
+.projects_top {
+  padding: rem(100) 0;
+  max-width: 1200px;
+  margin-bottom: rem(160);
+  @media ($mxl) {
+    margin-bottom: rem(80);
+  }
+  @media ($mobile) {
+    padding: rem(60) 0;
+    margin-bottom: rem(40);
+  }
+  @media ($msm) {
+    padding: rem(40) 0;
+  }
+}

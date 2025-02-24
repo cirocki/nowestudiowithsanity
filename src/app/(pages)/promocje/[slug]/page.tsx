@@ -1,6 +1,6 @@
 import { client } from "../../../../sanity/client";
 import { PortableText, type SanityDocument } from "next-sanity";
-import SanityImage from "@/app/components/atoms/SanityImage/SanityImage";
+import SanityImage from "@/app/components/atoms/sanityImage/SanityImage";
 import { richTextComponents } from "@/sanity/richTextComponents/richTextComponents";
 import { notFound } from "next/navigation";
 import { PROMOPAGEDATA } from "@/sanity/queries/promoPageData";

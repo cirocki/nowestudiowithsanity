@@ -1,0 +1,88 @@
+@use "../../../styles/variables.scss" as *;
+$promobp: "max-width: " rem(569.98);
+.box {
+  display: flex;
+  max-width: 560px;
+  padding: rem(40);
+  border: 1px solid $border-color-dark;
+  border-radius: $border-radius-default;
+  position: relative;
+
+  @media ($mmd) {
+    max-width: 100%;
+  }
+
+  @media ($sm) {
+    &:hover {
+      .thumb {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+.thumb {
+  transition: transform 1s cubic-bezier(0.43, 0.195, 0.02, 1);
+}
+
+.box_grid {
+  display: grid;
+  grid-template-columns: rem(96) auto;
+  grid-template-areas: "image title" "image text";
+  grid-gap: rem(10) rem(40);
+  @media ($promobp) {
+    grid-template-columns: rem(48) auto;
+    grid-template-areas: "image title" "text text" "ribbon ribbon";
+    grid-gap: rem(20);
+  }
+}
+.promo_image {
+  grid-area: image;
+}
+.promo_content {
+  grid-area: text;
+  color: $color-text-darkbg;
+  @media ($promobp) {
+    font-size: rem(14);
+  }
+}
+
+.promo_title {
+  grid-area: title;
+  color: $color-white;
+  font-family: $font-family-display;
+  font-size: rem(14);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  @media ($promobp) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.ribbon {
+  background-color: $color-black;
+  border: 1px solid $border-color-dark;
+  position: absolute;
+  left: rem(40);
+  top: 100%;
+  transform: translateY(-50%);
+  padding: rem(4) rem(12);
+  border-radius: $border-radius-default;
+  @media ($promobp) {
+    grid-area: ribbon;
+    position: relative;
+    left: auto;
+    border: none;
+    padding: 0;
+  }
+}
+
+.ribbon_content {
+  color: $color-text-darkbg;
+  font-family: $font-family-display;
+  font-size: rem(11);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

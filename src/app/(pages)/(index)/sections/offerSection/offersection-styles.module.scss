@@ -1,0 +1,167 @@
+@use "../../../../styles/variables.scss" as *;
+
+$offermobile: "max-width: " rem(1599.98);
+.offer {
+  border-top: 1px solid $border-color-dark;
+  padding: rem(160) 0;
+  @media ($mxl) {
+    padding: rem(120) 0;
+  }
+  @media ($mobile) {
+    padding: rem(80) 0;
+  }
+}
+
+.section_subtitle_wrapper {
+  padding: rem(100) 0;
+  max-width: 1100px;
+
+  @media ($mobile) {
+    padding: rem(60) 0;
+  }
+  @media ($msm) {
+    padding: rem(40) 0;
+  }
+}
+
+.offer_items_wrapper {
+  // background-color: $color-accent;
+}
+
+.offer_item {
+  padding: rem(120) 0;
+  border-top: 1px solid $border-color-dark;
+  &:last-of-type {
+    border-bottom: 1px solid $border-color-dark;
+  }
+
+  @media ($mobile) {
+    padding: rem(80) 0;
+  }
+}
+
+.offer_item_heading {
+  display: flex;
+  gap: rem(30);
+  padding-bottom: rem(40);
+  @media ($mxxl) {
+    padding-bottom: rem(10);
+  }
+}
+
+.offer_item_title {
+  font-size: 40px;
+  text-transform: uppercase;
+
+  @media ($mxxl) {
+    font-size: 32px;
+  }
+  @media ($mobile) {
+    font-size: 24px;
+  }
+}
+
+.offer_item_desc {
+  color: $color-text-darkbg;
+  padding-bottom: rem(50);
+  max-width: 1100px;
+
+  @media ($mxxl) {
+    padding: rem(20) 0 rem(30) 0;
+  }
+  @media ($mobile) {
+    font-size: 16px;
+    max-width: 640px;
+    padding: rem(20) 0 rem(20) 0;
+  }
+}
+
+.number {
+  font-family: $font-family-display;
+  font-size: rem(14);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  color: $color-text-darkbg;
+  padding-bottom: rem(10);
+  position: relative;
+  top: rem(8);
+  @media ($mobile) {
+    display: none;
+  }
+}
+
+.offer_item_content_grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas: ". benefits" "text benefits" "cta benefits" ". benefits";
+  grid-gap: 0 rem(240);
+  @media ($offermobile) {
+    grid-gap: 0 rem(80);
+  }
+  @media ($mxxl) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "text" "benefits" "cta";
+  }
+}
+
+.offer_item_text {
+  grid-area: text;
+  height: fit-content;
+  // background-color: red;
+}
+.offer_item_cta {
+  grid-area: cta;
+  // background-color: cadetblue;
+}
+.offer_item_benefits {
+  grid-area: benefits;
+  // background-color: beige;
+}
+.offer_items_wrapper {
+  position: relative;
+}
+
+.benefits_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: fit-content;
+  padding: rem(80);
+  border: 1px solid $border-color-dark;
+  border-radius: $border-radius-default;
+  max-width: 1100px;
+  @media ($mxxl) {
+    padding: rem(20) 0 rem(40) 0;
+    border: none;
+  }
+  li {
+    display: grid;
+    grid-template-columns: rem(32) 1fr;
+    grid-gap: rem(20);
+    padding-bottom: rem(20);
+    @media ($mobile) {
+      grid-template-columns: rem(24) 1fr;
+    }
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+  }
+
+  p {
+    color: $color-text-darkbg;
+    @media ($mobile) {
+      font-size: 16px;
+      max-width: 640px;
+    }
+  }
+}
+
+.check {
+  font-size: 32px;
+  @media ($mobile) {
+    font-size: 24px;
+  }
+}

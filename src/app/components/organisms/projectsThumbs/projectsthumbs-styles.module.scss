@@ -1,0 +1,64 @@
+@use "../../../styles/variables.scss" as *;
+.projects_list {
+  // margin: rem(160) 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: rem(160);
+  @media ($mobile) {
+    gap: rem(80);
+  }
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  grid-gap: rem(160);
+  @media ($mxl) {
+    grid-gap: rem(80);
+  }
+  @media ($mobile) {
+    grid-template-columns: 1fr;
+    grid-gap: rem(40);
+  }
+}
+.reverse {
+  grid-auto-flow: dense;
+  direction: rtl;
+
+  > * {
+    direction: ltr;
+  }
+}
+.project_content_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.project_title {
+  font-size: rem(40);
+  padding-bottom: rem(40);
+  line-height: 1;
+  width: 100%;
+
+  @media ($mxxl) {
+    font-size: 32px;
+  }
+  @media ($mobile) {
+    font-size: 24px;
+    padding-bottom: rem(30);
+  }
+}
+.project_subtitle {
+  color: $color-text-darkbg;
+  padding-bottom: rem(40);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @media ($mobile) {
+    padding-bottom: rem(30);
+    font-size: 16px;
+    max-width: 640px;
+  }
+}

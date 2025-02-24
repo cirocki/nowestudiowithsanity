@@ -1,0 +1,144 @@
+@use "../../../../styles/variables.scss" as *;
+$aboutadd16: "max-width: " rem(1599.98);
+.about {
+  border-top: 1px solid $border-color-dark;
+  padding: rem(160) 0;
+  @media ($mxl) {
+    padding: rem(120) 0;
+  }
+  @media ($mobile) {
+    padding: rem(80) 0;
+  }
+}
+.section_subtitle_wrapper {
+  padding: rem(100) 0;
+  border-bottom: 1px solid $border-color-dark;
+  max-width: 1200px;
+  @media ($mobile) {
+    padding: rem(60) 0;
+  }
+  @media ($msm) {
+    padding: rem(40) 0;
+  }
+}
+
+.boxes_wrapper {
+  padding-top: rem(200);
+  @media ($mobile) {
+    padding-top: rem(80);
+  }
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: rem(80);
+  font-size: rem(24);
+  text-align: center;
+  border: 1px solid $border-color-dark;
+  border-radius: $border-radius-default;
+  overflow: hidden;
+
+  @media ($mobile) {
+    font-size: rem(20);
+  }
+  @media ($msm) {
+    font-size: rem(18);
+    padding: rem(80) rem(40);
+  }
+  .bold {
+    font-size: rem(72);
+    margin-bottom: rem(30);
+    line-height: 1;
+    @media ($msm) {
+      font-size: rem(48);
+      margin-bottom: rem(20);
+    }
+  }
+}
+
+.box_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.marquee_wrapper {
+  position: absolute;
+  transform: rotate(10deg);
+  top: rem(160);
+  @media ($mxxxl) {
+    top: auto;
+    bottom: 0;
+  }
+}
+// GRID
+.boxes_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: rem(40);
+  @media ($mxxxl) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+  }
+  @media ($aboutadd16) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+  @media ($mmd) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.box2 {
+  grid-column: 2/3;
+  grid-row: 1/3;
+  display: flex;
+  background-color: #d4d6d9;
+  position: relative;
+  @media ($mxxxl) {
+    grid-row: auto;
+  }
+  @media ($mobile) {
+    order: -1;
+  }
+
+  .box_content {
+    height: 100%;
+    justify-content: flex-end;
+  }
+}
+
+.box4,
+.box2 {
+  padding: 0;
+}
+.box6 {
+  grid-column: 3/5;
+  grid-row: 2/3;
+  @media ($mxxxl) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media ($aboutadd16) {
+  .box1 {
+    grid-column: 1/2;
+  }
+  .box2 {
+    grid-column: 2/3;
+  }
+  .box3 {
+    grid-column: 2/3;
+  }
+  .box4 {
+    grid-column: 1/2;
+  }
+  .box6 {
+    grid-column: 1/3;
+  }
+}

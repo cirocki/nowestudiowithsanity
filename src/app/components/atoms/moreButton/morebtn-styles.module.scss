@@ -1,0 +1,98 @@
+@use "../../../styles/variables.scss" as *;
+
+.link {
+  height: 30px;
+  font-size: 14px;
+  align-items: center;
+  color: $color-white;
+  text-decoration: none;
+  display: flex;
+  width: fit-content;
+  border-radius: $border-radius-default;
+  border: 1px solid $border-color-dark;
+  padding: 0.5rem 1.5rem 0.5rem 2rem;
+
+  &:hover {
+    .link_wrapper {
+      transform: translateY(-20px);
+    }
+    .link_title1 {
+      transform: rotate(10deg);
+    }
+    .link_title2 {
+      transform: rotate(0);
+    }
+  }
+}
+
+/* Hide extra text */
+.mask {
+  position: relative;
+  padding: 0;
+  height: 20px;
+
+  /*  Remove overflow to see how it works　:) */
+  overflow: hidden;
+}
+
+.link_wrapper {
+  transition: transform 0.4s ease;
+}
+
+.title {
+  display: block;
+  font-family: $font-family-display;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: uppercase;
+
+  transition: transform 0.4s ease;
+}
+
+.link_title1 {
+  transform-origin: right center;
+}
+
+.link_title2 {
+  transform-origin: left center;
+  transform: rotate(20deg);
+}
+
+.link_icon {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+
+  /*  Remove overflow to see how it works　:) */
+  overflow: hidden;
+}
+
+.icon {
+  display: block;
+  position: absolute;
+  transition: transform 0.4s ease;
+  // transform: rotate(45deg);
+}
+
+.icon:nth-child(2) {
+  transform: translate(-40px);
+}
+
+/* Hover Action*/
+
+/* Move up two texts (20px = font-size) */
+
+/* Move arrows to right */
+.link:hover .icon:first-child {
+  transform: translate(40px);
+}
+
+.link:hover .icon:nth-child(2) {
+  transform: translate(0px);
+}

@@ -1,0 +1,103 @@
+@use "../../../../styles/variables.scss" as *;
+$heromobile: "max-width: " rem(1599.98);
+.hero_content {
+  min-height: calc(100dvh - $desktop-header-height);
+  display: flex;
+}
+
+.hero_content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: rem(80);
+  padding: rem(120) 0;
+  grid-template-areas: "title_wrapper video_wrapper" "promo_wrapper subtitle_wrapper ";
+  @media ($heromobile) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "title_wrapper" "subtitle_wrapper" "video_wrapper" "promo_wrapper";
+  }
+  @media ($mxl) {
+    padding: rem(120) 0;
+    grid-gap: rem(40);
+  }
+  @media ($mobile) {
+    padding: rem(60) 0 rem(80) 0;
+  }
+}
+
+.title_wrapper {
+  display: flex;
+  align-items: center;
+  grid-area: title_wrapper;
+}
+
+.centered {
+  position: absolute;
+  @media ($heromobile) {
+    position: relative;
+  }
+}
+.hero_title {
+  font-size: rem(120);
+  font-family: $font-family-display;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  background-color: $color-black;
+  padding: rem(40) rem(40) rem(40) 0;
+  border-bottom: 1px solid $border-color-dark;
+  border-top-right-radius: $border-radius-default;
+  border-bottom-right-radius: $border-radius-default;
+  @media ($heromobile) {
+    border: none;
+    padding: 0;
+  }
+  @media ($mxxxl) {
+    font-size: rem(100);
+  }
+  @media ($mobile) {
+    font-size: rem(64);
+  }
+  @media ($mmd) {
+    font-size: rem(36);
+  }
+  @media ($msm) {
+    font-size: rem(32);
+  }
+}
+
+.video_wrapper {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  border-radius: $border-radius-default;
+  overflow: hidden;
+  grid-area: video_wrapper;
+  @media ($mmd) {
+    margin-bottom: rem(20);
+  }
+}
+
+.subtitle_wrapper {
+  display: flex;
+  align-items: center;
+  grid-area: subtitle_wrapper;
+}
+
+.promo_wrapper {
+  grid-area: promo_wrapper;
+}
+.hero_subtitle {
+  font-size: rem(24);
+  @media ($mmd) {
+    font-size: rem(18);
+    margin-top: rem(-20);
+  }
+}
