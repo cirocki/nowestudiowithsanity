@@ -42,42 +42,58 @@ export default async function PostPage({
   }
 
   return (
-    <article>
-      <Container>
-        <header className={styles.blog_header}>
-          <h1>{title}</h1>
-          {image && (
-            <ImageWrapper>
-              <SanityImage src={image} alt={title} width={720} height={480} />
-            </ImageWrapper>
-          )}
-        </header>
+    <article className={styles.blog_page}>
+      <header className={styles.article_header}>
+        <Container>
+          <div className={styles.article_header_content}>
+            <h1 className={styles.article_title}>{title}</h1>
+            <div className={styles.tags_wrapper}>
+              <ul>
+                {tags.map((tag: Tag) => (
+                  <li className={styles.tag} key={tag._id}>
+                    {tag.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <p className={styles.date}>
+              {new Date(publishedAt).toLocaleDateString()}
+            </p>
+          </div>
 
-        <div className={styles.blog_content}>
-          <p>Published: {new Date(publishedAt).toLocaleDateString()}</p>
+          {image && (
+            <div className={styles.article_header_image}>
+              <ImageWrapper>
+                <SanityImage
+                  src={image}
+                  alt={title}
+                  width={1200}
+                  height={800}
+                />
+              </ImageWrapper>
+            </div>
+          )}
+        </Container>
+      </header>
+
+      <div className={styles.article_content}>
+        <Container>
           <strong>seo:</strong>
           <p>{seoDesc}</p>
           <br></br>
-          <strong>intro:</strong>
+          <p className={styles.intro}>{intro}</p>
           <p>{intro}</p>
-          <br></br>
-          tags:
-          {tags.map((tag: Tag) => (
-            <p className="text-sm font-semibold" key={tag._id}>
-              {tag.name}
-            </p>
-          ))}
           <br></br>
           {Array.isArray(richBody) && (
             <PortableText value={richBody} components={richTextComponents} />
           )}
-        </div>
-        <div className={styles.blog_footer}>
-          <Link href="/blog" className="hover:underline">
-            ← Back to posts
-          </Link>
-        </div>
-      </Container>
+        </Container>
+      </div>
+      <div className={styles.blog_footer}>
+        <Link href="/blog" className="hover:underline">
+          ← Back to posts
+        </Link>
+      </div>
     </article>
   );
 }
