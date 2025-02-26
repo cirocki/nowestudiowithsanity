@@ -10,6 +10,7 @@ type Props = Omit<ImageProps, "src"> & {
 
 export default function SanityImage({ src, alt, ...props }: Props) {
   return (
+    // <ImageWrapper>
     <Image
       src="Doesn't matter"
       alt={alt}
@@ -18,5 +19,6 @@ export default function SanityImage({ src, alt, ...props }: Props) {
       }
       {...props}
     />
+    // </ImageWrapper>
   );
 }

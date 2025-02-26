@@ -10,8 +10,8 @@ export const richTextComponents = {
       <SanityImage
         src={props.value}
         alt={props.value.alt}
-        width={720}
-        height={480}
+        width={1200}
+        height={800}
       />
     ),
   },

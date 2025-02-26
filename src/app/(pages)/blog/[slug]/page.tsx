@@ -1,6 +1,5 @@
 import { client } from "../../../../sanity/client";
 import { PortableText, type SanityDocument } from "next-sanity";
-import Link from "next/link";
 import { POSTDATA } from "../../../../sanity/queries/postData";
 import SanityImage from "@/app/components/atoms/sanityImage/SanityImage";
 import { richTextComponents } from "@/sanity/richTextComponents/richTextComponents";
@@ -8,6 +7,7 @@ import { notFound } from "next/navigation";
 import ImageWrapper from "@/app/components/atoms/imageWrapper/ImageWrapper";
 import Container from "@/app/components/atoms/container/Container";
 import styles from "./blogpage-styles.module.scss";
+import { Link } from "next-transition-router";
 
 export default async function PostPage({
   params,
@@ -47,18 +47,20 @@ export default async function PostPage({
         <Container>
           <div className={styles.article_header_content}>
             <h1 className={styles.article_title}>{title}</h1>
-            <div className={styles.tags_wrapper}>
-              <ul>
-                {tags.map((tag: Tag) => (
-                  <li className={styles.tag} key={tag._id}>
-                    {tag.name}
-                  </li>
-                ))}
-              </ul>
+            <div className={styles.article_info_wrapper}>
+              <p className={styles.date}>
+                {new Date(publishedAt).toLocaleDateString()}
+              </p>
+              <div className={styles.tags_wrapper}>
+                <ul>
+                  {tags.map((tag: Tag) => (
+                    <li className={styles.tag} key={tag._id}>
+                      {tag.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <p className={styles.date}>
-              {new Date(publishedAt).toLocaleDateString()}
-            </p>
           </div>
 
           {image && (
@@ -76,23 +78,28 @@ export default async function PostPage({
         </Container>
       </header>
 
-      <div className={styles.article_content}>
+      <div className={styles.article_body}>
         <Container>
-          <strong>seo:</strong>
-          <p>{seoDesc}</p>
-          <br></br>
-          <p className={styles.intro}>{intro}</p>
-          <p>{intro}</p>
-          <br></br>
-          {Array.isArray(richBody) && (
-            <PortableText value={richBody} components={richTextComponents} />
-          )}
+          <div className={styles.article_content}>
+            <p className={styles.intro}>{intro}</p>
+
+            <p>{seoDesc}</p>
+            <br></br>
+
+            <br></br>
+            {Array.isArray(richBody) && (
+              <PortableText value={richBody} components={richTextComponents} />
+            )}
+          </div>
         </Container>
       </div>
-      <div className={styles.blog_footer}>
-        <Link href="/blog" className="hover:underline">
-          ← Back to posts
-        </Link>
+
+      <div className={styles.article_footer}>
+        <Container>
+          <Link href="/blog" className="hover:underline">
+            ← Back to posts
+          </Link>
+        </Container>
       </div>
     </article>
   );

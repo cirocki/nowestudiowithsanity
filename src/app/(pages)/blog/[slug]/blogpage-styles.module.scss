@@ -1,10 +1,9 @@
 @use "../../../../app/styles/variables.scss" as *;
 
-.blog_page {
-}
 .article_header {
-  background-color: $color-white;
+  background-color: #f4f4f4;
   position: relative;
+
   z-index: 1;
   &::after {
     position: absolute;
@@ -19,16 +18,85 @@
 }
 .article_header_content {
   padding: rem(160) 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .article_header_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .article_title {
   font-size: rem(40);
 }
+.article_info_wrapper {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid $border-color-dark;
+  padding-top: rem(40);
+  margin-top: rem(40);
+}
+.article_body {
+  background-color: #f4f4f4;
+  color: #3a3d40;
+  // color: $color-black;
+}
+
 .article_content {
-  padding: rem(160) 0;
+  padding: rem(80) 0 rem(160) 0;
   background-color: $color-white;
-  color: $color-black;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  > * {
+    grid-column: 3 / 11;
+  }
+  img {
+    grid-column: 1 / -1;
+    border-radius: $border-radius-default;
+    overflow: hidden;
+    width: fit-content;
+    height: fit-content;
+    margin: rem(80) 0;
+  }
+  .intro {
+    grid-column: 1 / 13;
+    color: $color-black;
+  }
+
+  strong {
+    font-weight: 500;
+  }
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $font-family-text;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    color: $color-black;
+  }
+  h2 {
+    font-size: rem(32);
+  }
+  h3 {
+    font-size: rem(24);
+  }
+  h4 {
+    font-size: rem(20);
+  }
+  p {
+    line-height: 1.6;
+  }
+  a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
 }
 
 // new
@@ -60,8 +128,10 @@
 }
 
 .intro {
-  color: $color-text-darkbg;
+  // color: $color-text-darkbg;
+  font-size: rem(24);
   font-weight: 500;
+  margin-bottom: rem(80);
 }
 .date {
   font-family: $font-family-display;
@@ -71,15 +141,16 @@
   letter-spacing: 1px;
 
   color: $color-text-darkbg;
-  margin-bottom: rem(20);
 }
 
 // TAGS
 .tags_wrapper {
-  padding-top: rem(40);
-  @media ($mxxl) {
-    padding-top: 0;
-  }
+  display: flex;
+  justify-content: flex-end;
+  // padding-top: rem(40);
+  // @media ($mxxl) {
+  //   padding-top: 0;
+  // }
   ul {
     gap: rem(8);
     display: flex;
