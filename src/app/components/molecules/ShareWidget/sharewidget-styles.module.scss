@@ -1,0 +1,14 @@
+@use "../../../../app/styles/variables.scss" as *;
+
+.share_widget {
+  width: fit-content;
+  display: flex;
+  gap: rem(8);
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: $border-radius-default;
+
+  button {
+    height: 32px;
+  }
+}

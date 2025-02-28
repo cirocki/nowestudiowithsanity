@@ -8,6 +8,7 @@ import ImageWrapper from "@/app/components/atoms/imageWrapper/ImageWrapper";
 import Container from "@/app/components/atoms/container/Container";
 import styles from "./blogpage-styles.module.scss";
 import { Link } from "next-transition-router";
+import ShareWidget from "@/app/components/molecules/ShareWidget/ShareWidget";
 
 export default async function PostPage({
   params,
@@ -62,43 +63,61 @@ export default async function PostPage({
               </div>
             </div>
           </div>
-
-          {image && (
-            <div className={styles.article_header_image}>
-              <ImageWrapper>
-                <SanityImage
-                  src={image}
-                  alt={title}
-                  width={1200}
-                  height={800}
-                />
-              </ImageWrapper>
-            </div>
-          )}
         </Container>
+
+        {image && (
+          <div className={styles.article_header_image_wrapper}>
+            <Container>
+              <div className={styles.article_header_image_grid}>
+                <div className={styles.article_header_image}>
+                  <ImageWrapper>
+                    <SanityImage
+                      src={image}
+                      alt={title}
+                      width={1200}
+                      height={800}
+                    />
+                  </ImageWrapper>
+                </div>
+              </div>
+            </Container>
+          </div>
+        )}
       </header>
 
-      <div className={styles.article_body}>
+      <div className={styles.article_body_wrapper}>
         <Container>
-          <div className={styles.article_content}>
-            <p className={styles.intro}>{intro}</p>
-
-            <p>{seoDesc}</p>
-            <br></br>
-
-            <br></br>
-            {Array.isArray(richBody) && (
-              <PortableText value={richBody} components={richTextComponents} />
-            )}
+          <div className={styles.article_body}>
+            <div className={styles.article_content}>
+              <p className={styles.intro}>{intro}</p>
+              <p>{seoDesc}</p>
+              {Array.isArray(richBody) && (
+                <PortableText
+                  value={richBody}
+                  components={richTextComponents}
+                />
+              )}
+            </div>
+          </div>
+          <div className={styles.share}>
+            <p>Udostępnij:</p>
+            <ShareWidget link="https://www.onet.pl/" desc={seoDesc} />
           </div>
         </Container>
       </div>
 
       <div className={styles.article_footer}>
         <Container>
-          <Link href="/blog" className="hover:underline">
-            ← Back to posts
-          </Link>
+          <div className={styles.article_footer_grid}>
+            <div className={styles.article_footer_back}>
+              <Link href="/blog" className={styles.article_footer_link}>
+                Wróć do listy artykułów
+              </Link>
+            </div>
+            <div className={styles.article_footer_featured}>
+              <Link href="/blog">Sprawdz tez</Link>
+            </div>
+          </div>
         </Container>
       </div>
     </article>
