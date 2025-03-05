@@ -169,17 +169,16 @@ export default async function PostPage({
       <div className={styles.more_articles}>
         <Container>
           <div className={styles.more_articles_grid}>
-            <div>
+            <div className={styles.back}>
               <BackButton href={"/blog"} name="Wróć do listy artykułów" />
             </div>
-            {/* PREV  */}
+
             {prevPost ? (
               <NextPrevPost post={prevPost} direction="Poprzedni" />
             ) : (
               <PostSubstitute />
             )}
 
-            {/* NEXT  */}
             {nextPost ? (
               <NextPrevPost post={nextPost} direction="Następny" />
             ) : (
