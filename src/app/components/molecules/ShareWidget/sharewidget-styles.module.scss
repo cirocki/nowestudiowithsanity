@@ -1,15 +1,5 @@
 @use "../../../../app/styles/variables.scss" as *;
 
-.share_widget {
-  p {
-    font-family: $font-family-display;
-    font-size: rem(14);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: $color-text-lightbg;
-  }
-}
 .share_icons {
   width: fit-content;
   display: flex;
@@ -17,5 +7,29 @@
 
   button {
     height: 32px;
+    svg {
+      &:hover {
+        animation: bump 500ms ease-out;
+      }
+    }
+  }
+}
+
+@keyframes bump {
+  15% {
+    -webkit-transform-origin: center center;
+    -webkit-transform: scale(1.4, 1.2);
+  }
+  40% {
+    -webkit-transform-origin: center center;
+    -webkit-transform: scale(0.9, 0.9);
+  }
+  75% {
+    -webkit-transform-origin: center center;
+    -webkit-transform: scale(1.08, 1);
+  }
+  100% {
+    -webkit-transform-origin: center center;
+    -webkit-transform: scale(1, 1);
   }
 }

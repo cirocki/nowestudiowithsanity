@@ -38,10 +38,12 @@ export default async function PostPage({
     options
   );
 
+  // NEED SLUG FOR SHARE LINK
+  const { slug } = await params;
+
   if (!post) {
     return notFound();
   }
-
   const {
     title,
     image,
@@ -67,13 +69,13 @@ export default async function PostPage({
   }
 
   const PostSubstitute = () => (
-    <>
-      <span className={styles.article_footer_box_intro}>Oferta</span>
-      <Link href={`/oferta`} className={styles.article_footer_link}>
+    <Link href={`/oferta`} className={styles.another_article}>
+      <span className={styles.another_article_intro}>Oferta</span>
+      <h2 className={styles.another_article_title}>
         Potrzebujesz nowoczesnej strony internetowej?<br></br>
         Jesteś w&nbsp;dobrym miejscu! Poznaj naszą ofertę.
-      </Link>
-    </>
+      </h2>
+    </Link>
   );
 
   const NextPrevPost = ({
@@ -83,111 +85,109 @@ export default async function PostPage({
     post: NextPrevPostType;
     direction: string;
   }) => (
-    <>
-      <span className={styles.article_footer_box_intro}>
-        {direction} artykuł
-      </span>
-      <Link
-        href={`/blog/${post.slug.current}`}
-        className={styles.article_footer_link}
-      >
-        {post.title}
-      </Link>
-    </>
+    <Link
+      href={`/blog/${post.slug.current}`}
+      className={styles.another_article}
+    >
+      <span className={styles.another_article_intro}>{direction} artykuł</span>
+      <h2 className={styles.another_article_title}>{post.title}</h2>
+    </Link>
   );
 
   return (
-    <article className={styles.blog_page}>
-      <header className={styles.article_header}>
-        <Container>
-          <div className={styles.article_header_content}>
-            <h1 className={styles.article_title}>{title}</h1>
-            <div className={styles.article_info_wrapper}>
-              <p className={styles.date}>
-                {new Date(publishedAt).toLocaleDateString()}
-              </p>
-              <div className={styles.tags_wrapper}>
-                <ul>
-                  {tags.map((tag: Tag) => (
-                    <li className={styles.tag} key={tag._id}>
-                      {tag.name}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </Container>
-
-        {image && (
-          <div className={styles.article_header_image_wrapper}>
-            <Container>
-              <div className={styles.article_header_image_grid}>
-                <div className={styles.article_header_image}>
-                  <ImageWrapper>
-                    <SanityImage
-                      src={image}
-                      alt={title}
-                      width={1200}
-                      height={800}
-                    />
-                  </ImageWrapper>
+    <>
+      <article className={styles.article}>
+        <header className={styles.article_header}>
+          <Container>
+            <div className={styles.article_header_content}>
+              <h1 className={styles.article_title}>{title}</h1>
+              <div className={styles.article_info_wrapper}>
+                <span className={styles.date}>
+                  {new Date(publishedAt).toLocaleDateString()}
+                </span>
+                <div className={styles.tags_wrapper}>
+                  <ul>
+                    {tags.map((tag: Tag) => (
+                      <li className={styles.tag} key={tag._id}>
+                        <span>{tag.name}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-            </Container>
-          </div>
-        )}
-      </header>
+            </div>
+          </Container>
 
-      <div className={styles.article_body_wrapper}>
-        <Container>
-          <div className={styles.article_body}>
-            <div className={styles.article_content}>
-              <p className={styles.intro}>{intro}</p>
+          {image && (
+            <div className={styles.article_header_image_wrapper}>
+              <Container>
+                <div className={styles.article_header_image_grid}>
+                  <div className={styles.article_header_image}>
+                    <ImageWrapper>
+                      <SanityImage
+                        src={image}
+                        alt={title}
+                        width={1200}
+                        height={800}
+                      />
+                    </ImageWrapper>
+                  </div>
+                </div>
+              </Container>
+            </div>
+          )}
+        </header>
 
-              {Array.isArray(richBody) && (
-                <PortableText
-                  value={richBody}
-                  components={richTextComponents}
-                />
-              )}
-              <div className={styles.article_share_wrapper}>
-                <span className={styles.article_footer_box_intro}>
-                  Udostępnij w social mediach:
-                </span>
-                <ShareWidget link="https://www.onet.pl/" desc={seoDesc} />
+        <div className={styles.article_background}>
+          <Container>
+            <div className={styles.article_content_wrapper}>
+              <div className={styles.article_content}>
+                <p className={styles.intro}>{intro}</p>
+                {Array.isArray(richBody) && (
+                  <PortableText
+                    value={richBody}
+                    components={richTextComponents}
+                  />
+                )}
+                <div className={styles.article_share}>
+                  <span className={styles.another_article_intro}>
+                    Udostępnij w social mediach:
+                  </span>
+
+                  {/* TODO - SPRAWDZIC CZY SHARING DZIALA I DODAĆ FOTO  */}
+                  <ShareWidget
+                    link={`https://nowe.studio/blog/${slug}`}
+                    desc={seoDesc}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </Container>
-      </div>
+          </Container>
+        </div>
+      </article>
 
-      <div className={styles.article_footer}>
+      <div className={styles.more_articles}>
         <Container>
-          <div className={styles.article_footer_grid}>
+          <div className={styles.more_articles_grid}>
             <div>
               <BackButton href={"/blog"} name="Wróć do listy artykułów" />
             </div>
             {/* PREV  */}
-            <div className={styles.article_footer_box}>
-              {prevPost ? (
-                <NextPrevPost post={prevPost} direction="Poprzedni" />
-              ) : (
-                <PostSubstitute />
-              )}
-            </div>
+            {prevPost ? (
+              <NextPrevPost post={prevPost} direction="Poprzedni" />
+            ) : (
+              <PostSubstitute />
+            )}
 
             {/* NEXT  */}
-            <div className={styles.article_footer_box}>
-              {nextPost ? (
-                <NextPrevPost post={nextPost} direction="Następny" />
-              ) : (
-                <PostSubstitute />
-              )}
-            </div>
+            {nextPost ? (
+              <NextPrevPost post={nextPost} direction="Następny" />
+            ) : (
+              <PostSubstitute />
+            )}
           </div>
         </Container>
       </div>
-    </article>
+    </>
   );
 }
