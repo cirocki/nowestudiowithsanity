@@ -1,12 +1,19 @@
 @use "../../../../app/styles/variables.scss" as *;
 
 .share_widget {
+  p {
+    font-family: $font-family-display;
+    font-size: rem(14);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $color-text-lightbg;
+  }
+}
+.share_icons {
   width: fit-content;
   display: flex;
-  gap: rem(8);
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: $border-radius-default;
+  gap: rem(12);
 
   button {
     height: 32px;

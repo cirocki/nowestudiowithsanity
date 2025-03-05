@@ -4,11 +4,27 @@ import { POSTDATA } from "../../../../sanity/queries/postData";
 import SanityImage from "@/app/components/atoms/sanityImage/SanityImage";
 import { richTextComponents } from "@/sanity/richTextComponents/richTextComponents";
 import { notFound } from "next/navigation";
+import { Link } from "next-transition-router";
 import ImageWrapper from "@/app/components/atoms/imageWrapper/ImageWrapper";
 import Container from "@/app/components/atoms/container/Container";
 import styles from "./blogpage-styles.module.scss";
-import { Link } from "next-transition-router";
 import ShareWidget from "@/app/components/molecules/ShareWidget/ShareWidget";
+import BackButton from "@/app/components/atoms/backButton/backButton";
+import type { Metadata } from "next";
+
+// SEO DYNAMIC META FETCH
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
+  const page = await client.fetch(POSTDATA, params);
+  return {
+    title: `${page?.metaTitle} | NOWE.studio`,
+    description: page?.seoDesc,
+  } satisfies Metadata;
+}
+// SEO DYNAMIC META FETCH
 
 export default async function PostPage({
   params,
@@ -28,19 +44,57 @@ export default async function PostPage({
 
   const {
     title,
-    // metaTitle,
     image,
     publishedAt,
     seoDesc,
     intro,
     richBody,
     tags,
+    nextPost,
+    prevPost,
   } = post;
 
   interface Tag {
     _id: string;
     name: string;
   }
+
+  interface NextPrevPostType {
+    title: string;
+    slug: {
+      current: string;
+    };
+  }
+
+  const PostSubstitute = () => (
+    <>
+      <span className={styles.article_footer_box_intro}>Oferta</span>
+      <Link href={`/oferta`} className={styles.article_footer_link}>
+        Potrzebujesz nowoczesnej strony internetowej?<br></br>
+        Jesteś w&nbsp;dobrym miejscu! Poznaj naszą ofertę.
+      </Link>
+    </>
+  );
+
+  const NextPrevPost = ({
+    post,
+    direction,
+  }: {
+    post: NextPrevPostType;
+    direction: string;
+  }) => (
+    <>
+      <span className={styles.article_footer_box_intro}>
+        {direction} artykuł
+      </span>
+      <Link
+        href={`/blog/${post.slug.current}`}
+        className={styles.article_footer_link}
+      >
+        {post.title}
+      </Link>
+    </>
+  );
 
   return (
     <article className={styles.blog_page}>
@@ -90,18 +144,20 @@ export default async function PostPage({
           <div className={styles.article_body}>
             <div className={styles.article_content}>
               <p className={styles.intro}>{intro}</p>
-              <p>{seoDesc}</p>
+
               {Array.isArray(richBody) && (
                 <PortableText
                   value={richBody}
                   components={richTextComponents}
                 />
               )}
+              <div className={styles.article_share_wrapper}>
+                <span className={styles.article_footer_box_intro}>
+                  Udostępnij w social mediach:
+                </span>
+                <ShareWidget link="https://www.onet.pl/" desc={seoDesc} />
+              </div>
             </div>
-          </div>
-          <div className={styles.share}>
-            <p>Udostępnij:</p>
-            <ShareWidget link="https://www.onet.pl/" desc={seoDesc} />
           </div>
         </Container>
       </div>
@@ -109,13 +165,25 @@ export default async function PostPage({
       <div className={styles.article_footer}>
         <Container>
           <div className={styles.article_footer_grid}>
-            <div className={styles.article_footer_back}>
-              <Link href="/blog" className={styles.article_footer_link}>
-                Wróć do listy artykułów
-              </Link>
+            <div>
+              <BackButton href={"/blog"} name="Wróć do listy artykułów" />
             </div>
-            <div className={styles.article_footer_featured}>
-              <Link href="/blog">Sprawdz tez</Link>
+            {/* PREV  */}
+            <div className={styles.article_footer_box}>
+              {prevPost ? (
+                <NextPrevPost post={prevPost} direction="Poprzedni" />
+              ) : (
+                <PostSubstitute />
+              )}
+            </div>
+
+            {/* NEXT  */}
+            <div className={styles.article_footer_box}>
+              {nextPost ? (
+                <NextPrevPost post={nextPost} direction="Następny" />
+              ) : (
+                <PostSubstitute />
+              )}
             </div>
           </div>
         </Container>

@@ -16,25 +16,27 @@ interface ShareWidgetProps {
 export default function ShareWidget({ link, desc }: ShareWidgetProps) {
   return (
     <div className={styles.share_widget}>
-      <FacebookShareButton url={link} quote={desc} blankTarget={true}>
-        <FacebookIcon size={32} round />
-      </FacebookShareButton>
+      <div className={styles.share_icons}>
+        <FacebookShareButton url={link} quote={desc} blankTarget={true}>
+          <FacebookIcon size={36} round />
+        </FacebookShareButton>
 
-      <TwitterShareButton url={link} title={desc}>
-        <TwitterIcon size={32} round />
-      </TwitterShareButton>
+        <TwitterShareButton url={link} title={desc}>
+          <TwitterIcon size={36} round />
+        </TwitterShareButton>
 
-      <WhatsappShareButton url={link} title={desc} separator=":: ">
-        <WhatsappIcon size={32} round />
-      </WhatsappShareButton>
+        <WhatsappShareButton url={link} title={desc} separator=":: ">
+          <WhatsappIcon size={36} round />
+        </WhatsappShareButton>
 
-      <LinkedinShareButton url={link} title={desc}>
-        <LinkedinIcon size={32} round />
-      </LinkedinShareButton>
+        <LinkedinShareButton url={link} title={desc}>
+          <LinkedinIcon size={36} round />
+        </LinkedinShareButton>
 
-      <EmailShareButton url={link} subject={desc}>
-        <EmailIcon size={32} round bgStyle={{ backgroundColor: "#111111" }} />
-      </EmailShareButton>
+        <EmailShareButton url={link} subject={desc}>
+          <EmailIcon size={36} round bgStyle={{ backgroundColor: "#111111" }} />
+        </EmailShareButton>
+      </div>
     </div>
   );
 }

@@ -3,6 +3,13 @@ import fetchFromSanity from "@/app/utils/fetchFromSanity";
 import { ALL_POSTS } from "@/sanity/queries/allPosts";
 import styles from "./blogindex-styles.module.scss";
 import Container from "@/app/components/atoms/container/Container";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog | NOWE.studio | Nowoczesne strony internetowe",
+  description: "TODO Nowoczesne strony internetowe...",
+};
+
 export default async function BlogPage() {
   const allPosts = await fetchFromSanity(ALL_POSTS);
 
