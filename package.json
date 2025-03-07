@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@portabletext/react": "^3.2.1",
     "@sanity/image-url": "^1.1.0",
     "@studio-freight/lenis": "^1.0.42",
     "@studio-freight/react-lenis": "^0.0.47",
@@ -21,6 +22,7 @@
     "next-transition-router": "^0.2.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-player": "^2.16.0",
     "sass": "^1.85.0"
   },
   "devDependencies": {

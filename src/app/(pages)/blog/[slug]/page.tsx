@@ -11,6 +11,8 @@ import styles from "./blogpage-styles.module.scss";
 import ShareWidget from "@/app/components/molecules/ShareWidget/ShareWidget";
 import BackButton from "@/app/components/atoms/backButton/backButton";
 import type { Metadata } from "next";
+import ReactPlayer from "react-player";
+import SanityVideo from "@/app/components/atoms/sanityVideo/SanityVideo";
 
 // SEO DYNAMIC META FETCH
 type Props = {
@@ -94,6 +96,14 @@ export default async function PostPage({
     </Link>
   );
 
+  const serializers = {
+    types: {
+      youtube: ({ props }) => {
+        return <pre>{JSON.stringify(props.url, null, 2)}</pre>;
+      },
+    },
+  };
+
   return (
     <>
       <article className={styles.article}>
@@ -147,6 +157,7 @@ export default async function PostPage({
                   <PortableText
                     value={richBody}
                     components={richTextComponents}
+                    types={serializers}
                   />
                 )}
                 <div className={styles.article_share}>
