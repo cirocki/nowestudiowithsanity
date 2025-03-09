@@ -111,12 +111,11 @@ $full-white-bg: "max-width: " rem(1499.98);
 .article_share {
   padding: rem(80) 0 0 0;
   max-width: $content-width;
+  @media ($mobile) {
+    padding: rem(40) 0 0 0;
+  }
 }
-.intro {
-  font-size: rem(24);
-  font-weight: 500;
-  margin-bottom: rem(80);
-}
+
 // RICHTEXT
 .article_content {
   padding: rem(80) 0 rem(160) 0;
@@ -132,6 +131,7 @@ $full-white-bg: "max-width: " rem(1499.98);
     grid-column: 3 / 11;
     @media ($mobile) {
       grid-column: 1 / -1;
+      font-size: rem(16);
     }
   }
   img {
@@ -141,15 +141,51 @@ $full-white-bg: "max-width: " rem(1499.98);
     width: fit-content;
     height: fit-content;
     margin: rem(80) 0;
+    @media ($mobile) {
+      margin: rem(40) 0;
+    }
   }
   .intro {
-    grid-column: 1 / 13;
+    grid-column: 1 / -1;
     color: $color-black;
+    font-size: rem(24);
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: rem(40);
+    @media ($mxxl) {
+      font-size: rem(20);
+    }
+    @media ($mxl) {
+      font-size: rem(18);
+    }
+    @media ($mobile) {
+      font-size: rem(16);
+    }
+  }
+  blockquote {
+    grid-column: 1 / -1;
+    background-color: $color-light-grey;
+    padding: rem(80);
+    margin: rem(80) 0;
+    border-radius: $border-radius-default;
+    font-weight: 500;
+    @media ($mobile) {
+      padding: rem(40);
+      margin: rem(40) 0;
+    }
+    @media ($msm) {
+      padding: rem(40) 5vw;
+      border-radius: 0;
+      border-top-right-radius: $border-radius-default;
+      border-bottom-right-radius: $border-radius-default;
+      margin-left: -5vw;
+    }
   }
 
   strong {
     font-weight: 500;
   }
+  h1,
   h2,
   h3,
   h4,
@@ -161,14 +197,47 @@ $full-white-bg: "max-width: " rem(1499.98);
     margin-bottom: 0.5em;
     color: $color-black;
   }
+  h1 {
+    font-size: rem(40);
+    @media ($mxxl) {
+      font-size: rem(32);
+    }
+    @media ($mxl) {
+      font-size: rem(28);
+    }
+    @media ($mobile) {
+      font-size: rem(24);
+    }
+  }
   h2 {
     font-size: rem(32);
+    @media ($mxxl) {
+      font-size: rem(28);
+    }
+    @media ($mxl) {
+      font-size: rem(24);
+    }
+    @media ($mobile) {
+      font-size: rem(20);
+    }
   }
   h3 {
     font-size: rem(24);
+    @media ($mxxl) {
+      font-size: rem(20);
+    }
+    @media ($mxl) {
+      font-size: rem(18);
+    }
   }
   h4 {
     font-size: rem(20);
+    @media ($mxxl) {
+      font-size: rem(18);
+    }
+    @media ($mobile) {
+      font-size: rem(16);
+    }
   }
   p {
     line-height: 1.6;
@@ -176,6 +245,23 @@ $full-white-bg: "max-width: " rem(1499.98);
   a {
     text-decoration: underline;
     text-decoration-thickness: 1px;
+  }
+  ol,
+  ul {
+    padding: rem(20) 0;
+    li {
+      margin-left: rem(20);
+    }
+  }
+  ol {
+    li {
+      list-style: decimal;
+    }
+  }
+  ul {
+    li {
+      list-style: disc;
+    }
   }
 }
 

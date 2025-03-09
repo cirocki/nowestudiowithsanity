@@ -96,14 +96,6 @@ export default async function PostPage({
     </Link>
   );
 
-  const serializers = {
-    types: {
-      youtube: ({ props }) => {
-        return <pre>{JSON.stringify(props.url, null, 2)}</pre>;
-      },
-    },
-  };
-
   return (
     <>
       <article className={styles.article}>
@@ -157,7 +149,6 @@ export default async function PostPage({
                   <PortableText
                     value={richBody}
                     components={richTextComponents}
-                    types={serializers}
                   />
                 )}
                 <div className={styles.article_share}>

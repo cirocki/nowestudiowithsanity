@@ -5,11 +5,20 @@
   padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
   border-radius: $border-radius-default;
   overflow: hidden;
-  margin: rem(40) 0;
+  margin: rem(80) 0;
+  @media ($mobile) {
+    margin: rem(40) 0;
+  }
 }
 
 .react_player {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+article {
+  .player_wrapper {
+    grid-column: 1 / -1;
+  }
 }

@@ -20,9 +20,9 @@ export default async function BlogPage() {
           <div className={styles.page_header_content}>
             <h1 className="title">Blog</h1>
             <h2>
-              Over 10 years experience in design, close collaboration in work,
-              friendship and a sense of humor is what makes FANCY a unique
-              company.
+              Doradzamy, jak świadomie zbudować wizerunek w&nbsp;sieci
+              i&nbsp;wykorzystać potencjał Internetu. Praktyczne wskazówki oraz
+              najnowsze trendy.
             </h2>
           </div>
         </Container>
@@ -30,10 +30,6 @@ export default async function BlogPage() {
       <section className={styles.articles_section}>
         <Container>
           <div className={styles.articles_grid}>
-            {allPosts?.length > 0 &&
-              allPosts.map((post) => (
-                <PostPreview key={post._id} post={post} />
-              ))}
             {allPosts?.length > 0 &&
               allPosts.map((post) => (
                 <PostPreview key={post._id} post={post} />

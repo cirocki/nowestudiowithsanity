@@ -34,6 +34,7 @@
   ul {
     gap: rem(8);
     display: flex;
+    flex-wrap: wrap;
   }
   @media ($msm) {
     display: none;
