@@ -1,0 +1,48 @@
+@use "../../../styles/variables.scss" as *;
+
+.page_header {
+  padding: rem(160) 0;
+  border-bottom: 1px solid $border-color-dark;
+  @media ($mobile) {
+    padding: rem(120) 0;
+  }
+  @media ($msm) {
+    padding: rem(80) 0;
+  }
+}
+
+.page_header_content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: rem(80);
+  justify-content: center;
+  align-items: center;
+  @media ($mobile) {
+    display: flex;
+    flex-direction: column;
+    gap: rem(20);
+    align-items: flex-start;
+  }
+  h1 {
+    font-size: rem(64);
+    text-transform: uppercase;
+    @media ($mobile) {
+      font-size: rem(48);
+    }
+    @media ($msm) {
+      font-size: rem(32);
+    }
+  }
+
+  p {
+    text-align: right;
+    font-size: rem(28);
+    @media ($mxl) {
+      text-align: left;
+      font-size: rem(24);
+    }
+    @media ($msm) {
+      font-size: rem(18);
+    }
+  }
+}

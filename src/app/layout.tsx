@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-
 import "./styles/normalize.scss";
 import "./styles/globals.scss";
 import Footer from "./components/organisms/footer/Footer";
@@ -29,7 +28,6 @@ export default function RootLayout({
             <Header />
             <main>
               {children}
-
               <ContactSection />
             </main>
             <Footer />
